@@ -1,0 +1,50 @@
+﻿@model List<Makale>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.id</td>
+        <td>@item.kategorisi</td>
+        <td>@item.yazar_ismi</td>
+        <td>@item.kaynakca</td>
+        <td>@item.baslik</td>
+        <td>@kisalt(item.konusu)</td>
+        <td>@item.yayinlama_tarihi</td>
+    </tr>
+    }
+</table>
+
+
+@ciz()
+
+<hr />
+
+@ciz("red","Negan") <!-- Methodu kullandık. -->
+
+
+<!-- helper Method oluşturma -->
+<!-- MVC'de ilgili View'da kullanmak üzere oluşturulan methodlardır. Sayfadaki değişkenlerle veya verilerle ilgili işlemler için genellikle kullanılır. -->
+@helper kisalt(string metin)
+{
+    if (metin.Length > 30)
+    {
+        <span>@metin.Substring(0, 30)</span> <a href="#">Read More</a>
+    }
+}
+
+
+@helper ciz()
+{
+    <div style="width:100px; background-color:fuchsia; height:100px;"></div>
+}
+
+@helper ciz(string renk, string isim) // C# methodu mantığıdır. Yine method tanımlayıp overload yaptık.
+{
+    <div style="width:100px; background-color:@renk; height:100px;">@isim</div>
+}

@@ -1,0 +1,81 @@
+﻿@model List<Product>
+@{
+    ViewBag.Title = "UrunleriListele";
+}
+
+<h2>UrunleriListele</h2>
+
+<div class="row" style="margin-top:100px;">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-md-12 col-lg-12">
+            @Html.Grid(Model).Columns(c =>
+                 {
+                     c.Add(p => p.ProductID).Titled("Ürün No").Sortable(true);
+                     c.Add(p => p.ProductName).Titled("Ürün Adı").Sortable(true).Filterable(true);
+                     c.Add(p => p.UnitPrice).Titled("Fiyatı").Sortable(true);
+                     c.Add(p => p.UnitsInStock).Titled("Stok Miktarı").Sortable(true).RenderValueAs(x => stokKontrol(x.UnitsInStock)).Encoded(false).Sanitized(false);
+                     c.Add(p => p.Category.CategoryName).Titled("Kategorisi").RenderValueAs(x => kontrol(x.Category)).Encoded(false).Sanitized(false);
+                     c.Add(p => p.Supplier.CompanyName).Titled("Tedarikçisi").RenderValueAs(x => kontrol(x.Supplier)).Encoded(false).Sanitized(false);
+                     c.Add(p => p.Discontinued).Titled("Ürün Satışta mı?").Sortable(true).RenderValueAs(x => satistami(x.Discontinued)).Encoded(false).Sanitized(false);
+                 }).WithPaging(10)
+            </div>
+        </div>
+    </div>
+</div>
+
+@helper kontrol(Category param)
+{
+    if (param == null || param.CategoryName == null)
+    {
+        @Html.Raw("<span>Kategorisi yok.</span>")
+    }
+    else
+    {
+        @param.CategoryName;
+    }
+}
+
+@helper kontrol(Supplier param)
+{
+    if (param == null || param.CompanyName == null)
+    {
+        @Html.Raw("<span>Tedarikçisi yok.</span>")
+    }
+    else
+    {
+        @param.CompanyName;
+    }
+}
+
+@helper satistami(bool deger)
+{
+    if(deger)
+    {
+        <span style="color:lawngreen">Satışta</span>
+    }
+    else
+    {
+        <span style="color:darkred">Satışta değil</span>
+    }
+}
+
+@helper stokKontrol(short? stok)
+{
+    if (stok < 20 && stok > 0)
+    {
+        <span style="color:orange">Stok bitmek üzere(@stok).</span>
+    }
+    else if (stok == 0)
+    {
+        <span style="color:red">Tükenmiş.</span>
+    }
+    else if(stok > 20 && stok <= 50)
+    {
+        <span style="color:deepskyblue">Stok iyi(@stok).</span>
+    }
+    else if(stok > 50)
+    {
+        <span style="color:darkblue">Stok yeterli(@stok).</span>
+    }
+}

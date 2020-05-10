@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_28_Grid_Kavrami", "MVC_28_Grid_Kavrami\MVC_28_Grid_Kavrami.csproj", "{37390410-F5FD-444A-96C2-42A8BCE76FCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37390410-F5FD-444A-96C2-42A8BCE76FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37390410-F5FD-444A-96C2-42A8BCE76FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37390410-F5FD-444A-96C2-42A8BCE76FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37390410-F5FD-444A-96C2-42A8BCE76FCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F4506C3-EAA4-4805-B487-4403B8B278F3}
+	EndGlobalSection
+EndGlobal
